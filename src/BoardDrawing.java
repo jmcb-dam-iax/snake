@@ -10,22 +10,49 @@ import javax.swing.JPanel;
 //note: board does not change dynamically 
 //note: board shape and window aesthetics to be set
 //note: unification of colors not done
-public class BoardDrawing extends JPanel {
 
+/**
+ * Draws game's board
+ * @author bitrider
+ * @version 1.0 03/03/2023
+ * @see JPanel
+ */
+public class BoardDrawing extends JPanel {
     /**
-     *
+     * Not used, should be removed
      */
     int b = 0;
+    /**
+     * Number of rows
+     */
     int row = 8;
+    /**
+     * Number of columns 
+     */
     int col = 8;
+    /**
+     * An array with each and every cell rectangle
+     */
     ArrayList<Rectangle> cells;
     //int player;
+    /**
+     * An array with each cell's number
+     */
     int[] cellnos;
 
+    /**
+     * The screen we will use to draw to 
+     */
     BoardScreen bs;
     //ArrayList<Portal> portals;
     //ArrayList<Player> players;
 
+    /**
+     * Constructor 
+     * @param row Number of rows
+     * @param col Number of colums
+     * @param bs A screen to paint to
+     */
     public BoardDrawing(int row, int col, BoardScreen bs) {
         this.bs = bs;
 
@@ -65,6 +92,10 @@ public class BoardDrawing extends JPanel {
 
     }
 
+    /**
+     * Paints a game's board
+     * @param g Graphic context to be used to paint
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;//.create();
@@ -183,6 +214,13 @@ public class BoardDrawing extends JPanel {
 		}
 	}
      */
+
+    /**
+     * Get a string describing <b>pnos</b> player's position
+     * @param pnos Player number
+     * @return A string with the description of given player
+     */
+
     public String ensurePlayerPosition(int pnos) {
         String message = "";
         for (Portal port : bs.portals) {
@@ -203,6 +241,13 @@ public class BoardDrawing extends JPanel {
 		player = a;
 	}
      */
+
+    /**
+     * Set player <b>pnos</b> to position <b>a</b> 
+     * @param a Player position
+     * @param pnos Player number
+     */
+
     public void setPlayer(int a, int pnos) {
         bs.players.get(pnos).incPosition(a);
     }
